@@ -2,7 +2,8 @@ const kv = await Deno.openKv();
 
 export const StudentModel = {
   async registerInterest(interest) {
-    // We use programmeId and email to create a unique key
+   
+    // I use programmeId and email to create a unique key
     const key = ["interests", interest.programmeId, interest.email];
     await kv.set(key, interest);
     return interest;
