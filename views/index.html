@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Hub [cite: 3]</title>
+    <style>
+        body { font-family: system-ui, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background: #f4f4f9; }
+        main { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .programme-card { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 4px; }
+        .programme-card:focus-within { border-color: #0056b3; box-shadow: 0 0 0 2px rgba(0,86,179,0.25); } /* Accessibility focus state */
+        form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; padding: 15px; background: #eee; border-radius: 4px; }
+        input, button { padding: 10px; font-size: 1rem; }
+        button { background: #0056b3; color: white; border: none; cursor: pointer; border-radius: 4px; }
+        button:hover, button:focus { background: #004494; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Available Programmes</h1>
+        <p>Explore our undergraduate and postgraduate degree programmes. [cite: 4]</p>
+        
+        <div id="programmes-container" aria-live="polite">
+            Loading programmes...
+        </div>
+    </main>
+
+    <script src="/app.js"></script>
+</body>
+</html>
