@@ -1,3 +1,16 @@
+function escapeHTML(str) {
+    if (!str) return "";
+    return str.replace(/[&<>'"]/g, 
+        tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag] || tag)
+    );
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     loadAdminProgrammes();
 
@@ -21,11 +34,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
 async function loadAdminProgrammes() {
     const tbody = document.getElementById('admin-programmes-list');
     const response = await fetch('/api/admin/programmes');
-    const programmes = await response.json();
     
+    // NEW: If the server says "Unauthorized", kick the user to the login page
+    if (response.status === 401) {
+        window.location.href = '/login.html';
+        return;
+    }
+
+    const programmes = await response.json();
     tbody.innerHTML = '';
 
     programmes.forEach(prog => {
@@ -34,8 +54,8 @@ async function loadAdminProgrammes() {
         const statusText = prog.isPublished ? 'Published' : 'Draft';
         
         tr.innerHTML = `
-            <td>${prog.title}</td>
-            <td>${prog.level}</td>
+            <td>${escapeHTML(prog.title)}</td>
+            <td>${escapeHTML(prog.level)}</td>
             <td class="${statusClass}">${statusText}</td>
             <td>
                 <button class="btn-publish" onclick="togglePublish('${prog.id}')">
