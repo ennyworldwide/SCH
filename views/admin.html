@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Course Hub</title>
+    <style>
+        body { font-family: system-ui, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background: #eef2f5; }
+        main { max-width: 1000px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .admin-section { margin-bottom: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background: #f4f4f9; }
+        .draft { color: orange; font-weight: bold; }
+        .published { color: green; font-weight: bold; }
+        input, select, button { padding: 8px; margin-top: 5px; }
+        button { cursor: pointer; background: #333; color: white; border: none; border-radius: 4px; }
+        .btn-delete { background: #dc3545; }
+        .btn-publish { background: #28a745; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Admin Dashboard</h1>
+        
+        <div class="admin-section">
+            <h2>Add New Programme</h2>
+            <form id="add-programme-form">
+                <input type="text" id="prog-title" placeholder="Programme Title" required>
+                <select id="prog-level">
+                    <option value="Undergraduate">Undergraduate</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                </select>
+                <input type="text" id="prog-desc" placeholder="Brief Description" required style="width: 100%;">
+                <button type="submit">Create Programme</button>
+            </form>
+        </div>
+
+        <div class="admin-section">
+            <h2>Manage Programmes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Level</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-programmes-list">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="/admin.js"></script>
+</body>
+</html>

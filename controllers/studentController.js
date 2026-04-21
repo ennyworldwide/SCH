@@ -2,8 +2,7 @@ import { StudentModel } from "../models/studentModel.js";
 
 export const registerInterest = async (ctx) => {
   try {
-    const body = ctx.request.body({ type: "json" });
-    const data = await body.value;
+    const data = await ctx.request.body.json();
 
     const newInterest = {
       id: crypto.randomUUID(),
