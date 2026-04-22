@@ -1,9 +1,8 @@
+// models/studentModel.js
 const kv = await Deno.openKv();
 
 export const StudentModel = {
   async registerInterest(interest) {
-   
-    // I use programmeId and email to create a unique key
     const key = ["interests", interest.programmeId, interest.email];
     await kv.set(key, interest);
     return interest;
@@ -12,6 +11,16 @@ export const StudentModel = {
   async getInterestsByProgramme(programmeId) {
     const interests = [];
     const entries = kv.list({ prefix: ["interests", programmeId] });
+    for await (const entry of entries) {
+      interests.push(entry.value);
+    }
+    return interests;
+  },
+
+  //Fetch all students across all programmes
+  async getAllInterests() {
+    const interests = [];
+    const entries = kv.list({ prefix: ["interests"] });
     for await (const entry of entries) {
       interests.push(entry.value);
     }

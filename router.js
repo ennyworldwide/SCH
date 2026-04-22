@@ -1,6 +1,6 @@
 import { Router } from "https://deno.land/x/oak/mod.ts";
 import { getPublishedProgrammes, getAllProgrammes, createProgramme, togglePublish, deleteProgramme } from "./controllers/programmeController.js";
-import { registerInterest } from "./controllers/studentController.js";
+import { registerInterest, exportMailingList } from "./controllers/studentController.js";
 import { getProgrammeModules } from "./controllers/moduleController.js";
 import { login, logout } from "./controllers/authController.js";
 import { requireAdmin } from "./middleware/authMiddleware.js";
@@ -21,5 +21,6 @@ router.get("/api/admin/programmes", requireAdmin, getAllProgrammes);
 router.post("/api/admin/programmes", requireAdmin, createProgramme);
 router.put("/api/admin/programmes/:id/publish", requireAdmin, togglePublish);
 router.delete("/api/admin/programmes/:id", requireAdmin, deleteProgramme);
+router.get("/api/admin/students/export", requireAdmin, exportMailingList);
 
 export default router;
