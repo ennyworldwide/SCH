@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Student Course Hub</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact Us</a>
+        </div>
+        <a href="/login.html" class="login-btn">Login</a>
+    </nav>
+
+    <main>
+        <h1>Contact Us</h1>
+        <p>Have questions? Send us a message and our support team will get back to you.</p>
+        <form onsubmit="alert('Message sent! (Mock functionality)'); event.preventDefault();">
+            <label>Name</label>
+            <input type="text" required>
+            <label>Email</label>
+            <input type="email" required>
+            <label>Message</label>
+            <textarea rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </main>
+</body>
+</html>

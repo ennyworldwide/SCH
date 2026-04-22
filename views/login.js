@@ -1,6 +1,10 @@
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    const btn = e.target.querySelector('button');
+    btn.textContent = "Verifying...";
+    btn.disabled = true;
+
     const data = {
         username: document.getElementById('username').value,
         password: document.getElementById('password').value
@@ -14,14 +18,22 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         });
 
         if (response.ok) {
-            // Login successful! The server just gave us the secure cookie.
-            // Redirect the user to the admin dashboard.
-            window.location.href = '/admin.html';
+            const result = await response.json();
+            
+            // Redirect based on role
+            if (result.role === 'lecturer') {
+                window.location.href = '/admin.html'; // Admins go to dashboard
+            } else if (result.role === 'student') {
+                window.location.href = '/'; // Students go directly back to homepage
+            }
         } else {
-            // Login failed. Show the error message.
             document.getElementById('error-msg').style.display = 'block';
+            btn.textContent = "Sign In";
+            btn.disabled = false;
         }
     } catch (error) {
         console.error('Login error:', error);
+        btn.textContent = "Sign In";
+        btn.disabled = false;
     }
 });

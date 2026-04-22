@@ -1,0 +1,51 @@
+/* views/styles.css */
+body { 
+    font-family: system-ui, sans-serif; 
+    line-height: 1.6; 
+    margin: 0; 
+    padding: 0; 
+    background: #f4f4f9; 
+}
+
+/* Navigation Bar */
+nav {
+    background: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav div a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+nav div a:hover {
+    color: #17a2b8;
+}
+.login-btn {
+    background: #17a2b8;
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
+main { 
+    max-width: 900px; 
+    margin: 30px auto; 
+    background: white; 
+    padding: 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+
+/* Forms & Buttons */
+form { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; padding: 20px; background: #eef2f5; border-radius: 6px; }
+input, select, textarea { padding: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box; }
+button { background: #0056b3; color: white; border: none; padding: 10px 15px; font-size: 1rem; cursor: pointer; border-radius: 4px; transition: background 0.2s; }
+button:hover { background: #004494; }
+
+/* Cards & UI */
+.card { border: 2px solid #eee; padding: 20px; margin-bottom: 20px; border-radius: 6px; }
+.badge { display: inline-block; background: #e2e8f0; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: bold; }
